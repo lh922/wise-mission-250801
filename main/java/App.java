@@ -2,28 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class WiseSaying {
-    int id;
-    String content;
-    String author;
-
-    WiseSaying(int id, String content, String author) {
-        this.id = id;
-        this.content = content;
-        this.author = author;
-    }
-}
-
-public class Main {
+public class App {
     static int lastId = 0;
     static Scanner sc = new Scanner(System.in);
     static List<WiseSaying> wiseSayings = new ArrayList<>();
 
-    public static void main(String[] args) {
-        startApp();
-    }
-
-    public static void startApp() {
+    public static void run() {
         while(true) {
             System.out.println("== 명언 앱 ==");
             System.out.print("명령) ");
@@ -68,7 +52,8 @@ public class Main {
             System.out.println("-------------------------");
 
             //명언 목록 출력
-            for(WiseSaying wiseSaying : wiseSayings) {
+            for (int i = wiseSayings.size() - 1; i >= 0; i--) {
+                WiseSaying wiseSaying = wiseSayings.get(i);
                 System.out.println(wiseSaying.id + " / " + wiseSaying.author + " / " + wiseSaying.content);
             }
         }
@@ -116,3 +101,6 @@ public class Main {
         return Integer.parseInt(command.split("=")[1]);
     }
 }
+
+
+
